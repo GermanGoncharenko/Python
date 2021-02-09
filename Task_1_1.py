@@ -1,0 +1,23 @@
+sec = int(input('Введите секунды: '))
+d = 0
+h = 0
+m = 0
+s = 0
+if 0 <= sec < 60:
+    s = sec
+elif 60 <= sec < 3600:
+    m = sec // 60
+    s = sec % 60
+elif 3600 <= sec < 86400:
+    h = sec // 3600
+    f = sec % 3600
+    m = f // 60
+    s = sec % 60
+elif 86400 <= sec:
+    d = sec // 86400
+    y = sec % 86400
+    h = y // 3600
+    f = sec % 3600
+    minutes = f // 60
+    s = sec % 60
+print(d, 'day', h, 'hour', m, 'minutes', s, 'seconds')

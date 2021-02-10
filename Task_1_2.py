@@ -29,9 +29,10 @@ while idx < len(box):
     k = j // 100000000
     total = q + e + t + u + o + s + f + h + k
     if total % 7 == 0:
-        amount += total
+        amount += box[idx]
     idx += 1
 print(amount)
+amount = 0
 idx = 0
 for idx in range(len(box)):
     box[idx] += 17
@@ -58,6 +59,6 @@ while idx < len(box):
     k = j // 100000000
     total = q + e + t + u + o + s + f + h + k
     if total % 7 == 0:
-        amount += total
+        amount += box[idx]
     idx += 1
 print(amount)

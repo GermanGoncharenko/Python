@@ -1,12 +1,12 @@
 from requests import get, utils
-response = get('http://www.cbr.ru/scripts/XML_daily.asp')
-encodings = utils.get_encoding_from_headers(response.headers)
-structure = response.content.decode(encoding=encodings)
-print(structure)
-dollar = structure.find("Valute ID=R01235")
-    dollar1 = dollar.content.replace(',', '.')
-    euro = structure.find("./*[@ID='R01239']/Value")
-    rezult['euro'] = euro.content.replace(',', '.')
-    print('%s руб.' % float(rezult['dollar']))
-    print('%s руб.' % float(rezult['euro']))
-currency_rates()
+response = utils.get_unicode_from_response(get('http://www.cbr.ru/scripts/XML_daily.asp'))
+
+def currency_rates(code):
+    content = response.split("<Valute ID=")
+    for i in content:
+        if code.upper() in i:
+            return float(i.replace("/", "").split("<Value>")[-2].replace(",", "."))
+
+
+print(currency_rates("USD"))
+print(currency_rates("EUR"))

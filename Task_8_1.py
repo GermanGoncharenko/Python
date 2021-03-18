@@ -13,3 +13,4 @@ try:
     email_parse('someone@geekbrainsru')
 except ValueError:
     print(f'Wrong email!')
+    
